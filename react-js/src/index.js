@@ -1,14 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { name,age } from './person';
+import ReactDOM from 'react-dom';
+import Football from './Football';
 
+ReactDOM.render(<Football/>, document.getElementById('root1'));
 
-function Message()
-{
-  return name + ' is ' + age + ' years old.';
-};
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Message />);
 
