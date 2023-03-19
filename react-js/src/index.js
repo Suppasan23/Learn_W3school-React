@@ -2,13 +2,69 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
 
-const cars = 
-[
-  {id: 1, brand: 'Ford'},
-  {id: 2, brand: 'BMW'},
-  {id: 3, brand: 'Audi'}
-];
-
-
 const root = ReactDOM.createRoot(document.getElementById('root1'));
-root.render(<Garage cars={cars}/>);
+root.render(<MyForm/>);
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function MyForm() 
+{
+
+  const [myInput, setMyInput] = useState("");
+  const [mySubmit, setMySubmit] = useState(false);
+
+
+  const handleSubmit = function(event)
+  {
+    event.preventDefault();
+    setMySubmit(true);
+  }
+
+
+  const handleChange = function(event)
+  {
+    setMyInput(event.target.value);
+    setMySubmit(false);
+  }
+
+  return(
+    <div>
+
+      <form onSubmit={handleSubmit}>
+
+        <input type="input" onChange={handleChange}/>
+
+        <button type="submit">Submit</button>
+
+      </form>
+
+      <ShowValue itemInput={myInput} itemSubmit={mySubmit}/>
+
+    </div>
+  )
+
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function ShowValue(props)
+{
+  const itemSubmit = props.itemSubmit;
+  const itemInput = props.itemInput;
+
+  if(itemSubmit)
+  {
+    return  (
+              <p>{itemInput}</p>
+            )  
+  }
+  else
+  {
+    return
+  }
+}
+
+
+
+
