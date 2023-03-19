@@ -10,9 +10,9 @@ root.render(<MyForm/>);
 function MyForm() 
 {
 
-  const [myInput, setMyInput] = useState("");
   const [mySubmit, setMySubmit] = useState(false);
-
+  const [myInput, setMyInput] = useState("");
+  
 
   const handleSubmit = function(event)
   {
@@ -38,10 +38,12 @@ function MyForm()
 
       </form>
 
-      <ShowValue itemInput={myInput} itemSubmit={mySubmit}/>
+      
+        <ShowValue itemInput={myInput} itemSubmit={mySubmit}/>
 
     </div>
   )
+
 
 
 }
@@ -53,7 +55,7 @@ function ShowValue(props)
   const itemSubmit = props.itemSubmit;
   const itemInput = props.itemInput;
 
-  if(itemSubmit)
+  if(itemSubmit&&itemInput)
   {
     return  (
               <p>{itemInput}</p>
@@ -61,7 +63,9 @@ function ShowValue(props)
   }
   else
   {
-    return
+    return  (
+              <p></p>
+            )
   }
 }
 
