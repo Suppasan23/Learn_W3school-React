@@ -1,74 +1,28 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root1'));
-root.render(<MyForm/>);
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function MyForm() 
-{
-
-  const [mySubmit, setMySubmit] = useState(false);
-  const [myInput, setMyInput] = useState("");
-  
-
-  const handleSubmit = function(event)
-  {
-    event.preventDefault();
-    setMySubmit(true);
-  }
-
-
-  const handleChange = function(event)
-  {
-    setMyInput(event.target.value);
-    setMySubmit(false);
-  }
-
-  return(
-    <div>
-
-      <form onSubmit={handleSubmit}>
-
-        <input type="input" onChange={handleChange}/>
-
-        <button type="submit">Submit</button>
-
-      </form>
-
-      
-        <ShowValue itemInput={myInput} itemSubmit={mySubmit}/>
-
-    </div>
-  )
-
-
-
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function ShowValue(props)
-{
-  const itemSubmit = props.itemSubmit;
-  const itemInput = props.itemInput;
-
-  if(itemSubmit&&itemInput)
-  {
-    return  (
-              <p>{itemInput}</p>
-            )  
-  }
-  else
-  {
-    return  (
-              <p></p>
-            )
-  }
-}
-
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 
 
 
