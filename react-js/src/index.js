@@ -1,26 +1,18 @@
-import ReactDOM from "react-dom/client";
 import { useState } from "react";
+import ReactDOM from "react-dom/client";
+import Car from "./Car";
 
 
-export default function App() {
+
+
+const ShowMe = function()
+{
   return (
-    <BrowserRouter>
-      <Routes>
-
-        <Route path="/" element={<Layout />}>
-
-          <Route index element={<Home />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/*" element={<NoPage />} />
-
-        </Route>
-
-      </Routes>
-    </BrowserRouter>
-  );
+    <>
+      <Car />
+    </>
+  )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
-
+root.render(<ShowMe />);
