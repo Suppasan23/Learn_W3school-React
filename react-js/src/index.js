@@ -1,18 +1,15 @@
-import { useState } from "react";
-import ReactDOM from "react-dom/client";
-import Car from "./Car";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './my-sass.scss';
 
-
-
-
-const ShowMe = function()
-{
+const Header = () => {
   return (
     <>
-      <Car />
+      <h1>Hello Style!</h1>
+      <p>Add a little style!.</p>
     </>
-  )
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<ShowMe />);
+root.render(<Header />);
